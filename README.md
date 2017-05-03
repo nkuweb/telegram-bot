@@ -5,4 +5,4 @@
 
 <h2>Kaynaklar</h2>
 <ul>
-<li>  https://github.com/nkuweb/telegram-bot/edit/master/README.md/li>
+<li>  https://github.com/nkuweb/telegram-bot/edit/master/README.md</li>

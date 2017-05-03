@@ -5,4 +5,4 @@
 
 <h2>Kaynaklar</h2>
 <ul>
-Utkucan <li>  https://github.com/UtkucanBykl/Blog-Django</li>Utkucan <li>  http://www.facebook.com</li>
+Utkucan <li>  https://github.com/UtkucanBykl/Blog-Django</li>Utkucan <li>  http://www.facebook.com</li>Utkucan <li>  https://github.com/UtkucanBykl/Blog-Django</li>

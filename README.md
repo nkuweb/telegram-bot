@@ -7,3 +7,4 @@
 * [  https://www.digitalocean.com/community/tutorials/how-to-install-and-manage-supervisor-on-ubuntu-and-debian-vps]
 * [  https://www.digitalocean.com/community/tutorials/how-to-install-and-manage-supervisor-on-ubuntu-and-debian-vps]
 * [ 2 https://github.com/nkuweb/telegram-bot]
+* [ 2 http://microservices.io/patterns/microservices.html]

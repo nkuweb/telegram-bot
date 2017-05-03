@@ -26,15 +26,16 @@ def kaynak(bot,update):
     a=check.url(k[2])
 
     if (a == True):
-	bot.sendMessage(chat_id=update.message.chat_id, text=update.message.from_user.first_name+"'nin Kaynağı Databaseye kaydettim")
-	readme= open('README.md', 'a')
-        x = str(update.message.text).replace("/kaynak"," ")
-        readme.write("* [{}]\n".format(update.message.from_user.first_name+"'nin "+x))
+        bot.sendMessage(chat_id=update.message.chat_id, text=update.message.from_user.first_name +
+                                                             "'nin Kaynağı Databaseye kaydettim")
+        readme = open('README.md', 'a')
+        x = str(update.message.text).replace("/kaynak", " ")
+        readme.write("{}".format("<li>" + x + "/li>"))
         readme.close()
         os.system("git add -A")
-        os.system("git commit -m 'Link'")
+        os.system("git commit -m '" + update.message.from_user.first_name + " Link '")
         os.system("git push")
-	bot.sendMessage(chat_id=update.message.chat_id,text="Url github'a eklendi.")
+        bot.sendMessage(chat_id=update.message.chat_id, text="Url github'a eklendi.")
     else:
         bot.sendMessage(chat_id=update.message.chat_id,text="URL HATALI")
 

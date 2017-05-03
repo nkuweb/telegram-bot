@@ -18,7 +18,7 @@ def echo(bot,update):
         bot.sendMessage(chat_id=update.message.chat_id, text="Sanada Hello")
     else:
         bot.sendMessage(chat_id=update.message.chat_id, text="Boş Konuşma "+update.message.from_user.first_name)
-def kaynak(bot,update):
+def kaynak2(bot,update):
 
     msg = update.message.text
     x = str(msg ).replace("/kaynak"," ")
@@ -46,7 +46,7 @@ def kaynak(bot,update):
 start_handler = CommandHandler('start', start)
 hello_handler=CommandHandler('hello',hello)
 echo_handler = MessageHandler(Filters.text, echo)
-kaynak_handler=CommandHandler('kaynak',kaynak)
+kaynak_handler=CommandHandler('kaynak2',kaynak2)
 
 #--------------------------------------------------
 #----------------DISPATCHER IS HERE----------------

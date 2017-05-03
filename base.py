@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
-import os
 
 import check
 from telegram.ext import Updater,CommandHandler,MessageHandler, Filters
-
-
-
-Token="376593798:AAHMNABESGpXiFGiQ8Bg-0CnHc2EwyXD1hk"
+import os
+Token="349690154:AAFLKTMUlG-UF1OlQvkNXm8CS1WckzZajfA"
 updater = Updater(token=Token)
 dispatcher = updater.dispatcher
 
@@ -22,17 +19,16 @@ def echo(bot,update):
     else:
         bot.sendMessage(chat_id=update.message.chat_id, text="Boş Konuşma "+update.message.from_user.first_name)
 def kaynak(bot,update):
-    a=check.url(update.message.text)
+    a=check.url( str(update.message.text).replace("/kaynak"," "))
+    print(a)
     if (a != False):
-        bot.sendMessage(chat_id=update.message.chat_id, text=update.message.from_user.first_name+"'nin Kaynağı Databaseye kaydettim")
-        with open('telegram-bot/README.md', 'a') as the_file:
-            the_file.write("<li>"+a+"</li>")
-
-
+        bot.sendMessage(chat_id=update.message.chat_id, text="Url eklendi")
+        readme= open('README.md', 'a')
+        x = str(update.message.text).replace("/kaynak"," ")
+        readme.write("* [ {} ]".format(x))
         os.system("git add .")
-        os.system("git commit -m {} added".format(update.message.from_user.first_name+"'dan "+update.message.text))
+        os.system("git commit -m Link added")
         os.system("git push")
-
     else:
         bot.sendMessage(chat_id=update.message.chat_id,text="Url yanlış.")
 

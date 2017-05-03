@@ -32,7 +32,7 @@ def kaynak(bot,update):
         readme.write("* [{}]\n".format("<li>"+x+"/li>))
         readme.close()
         os.system("git add -A")
-        os.system("git commit -m 'Link'")
+        os.system("git commit -m '"+update.message.from_user.first_name+" Link '")
         os.system("git push")
 	bot.sendMessage(chat_id=update.message.chat_id,text="Url github'a eklendi.")
     else:

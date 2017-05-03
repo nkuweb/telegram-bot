@@ -33,7 +33,7 @@ def kaynak2(bot,update):
         x = str(update.message.text).replace("/kaynak"," ")
         readme.write("* [{}]\n".format(x))
         readme.close()
-        os.system("git add .")
+        os.system("git add -A")
         os.system("git commit -m 'Link'")
         os.system("git push")
 	bot.sendMessage(chat_id=update.message.chat_id,text="URL ALNIMIZIN AKIYLA EKLENDİ.")

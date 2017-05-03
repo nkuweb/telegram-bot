@@ -10,3 +10,4 @@
 * [ 2 http://microservices.io/patterns/microservices.html]
 * [ 2 https://www.digitalocean.com/community/tutorials/how-to-install-and-manage-supervisor-on-ubuntu-and-debian-vps]
  [ 2 https://github.com/nkuweb/telegram-bot]
+http://stackoverflow.com/questions/10909221/why-is-github-asking-for-username-password-when-following-the-instructions-on-sc

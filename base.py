@@ -17,8 +17,12 @@ def echo(bot,update):
     else:
         bot.sendMessage(chat_id=update.message.chat_id, text="Boş Konuşma "+update.message.from_user.first_name)
 def kaynak(bot,update):
-    if (check.url(update.message.text) != False):
+    a=check.url(update.message.text)
+    print(a)
+    if (a != False):
         bot.sendMessage(chat_id=update.message.chat_id, text="Databaseye kaydettim")
+        with open('telegram-bot/README.md', 'a') as the_file:
+            the_file.write("<li> "+str(a))
     else:
         bot.sendMessage(chat_id=update.message.chat_id,text="Url yanlış.")
 

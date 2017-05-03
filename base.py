@@ -29,7 +29,7 @@ def kaynak(bot,update):
 	bot.sendMessage(chat_id=update.message.chat_id, text=update.message.from_user.first_name+"'nin Kaynağı Databaseye kaydettim")
 	readme= open('README.md', 'a')
         x = str(update.message.text).replace("/kaynak"," ")
-        readme.write("* [{}]\n".format(update.message.from_user.first_name+"'nin "+x))
+        readme.write("* [{}]\n".format("<li>"+x+"/li>))
         readme.close()
         os.system("git add -A")
         os.system("git commit -m 'Link'")

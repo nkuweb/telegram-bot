@@ -19,19 +19,25 @@ def echo(bot,update):
     else:
         bot.sendMessage(chat_id=update.message.chat_id, text="Boş Konuşma "+update.message.from_user.first_name)
 def kaynak(bot,update):
-    a=check.url( str(update.message.text).replace("/kaynak"," "))
-    print(a)
-    if (a != False):
+
+    msg = update.message.text
+    x = str(msg ).replace("/kaynak"," ")
+    k =  x.split(" ")
+    a=check.url(k[2])
+
+    print(update.message.text)
+
+    if (a == True):
         bot.sendMessage(chat_id=update.message.chat_id, text="Url eklendi")
-        readme= open('README.md', "a")
+        readme= open('README.md', 'a')
         x = str(update.message.text).replace("/kaynak"," ")
-        readme.write("*[{}]\n".format(x))
+        readme.write("* [{}]\n".format(x))
         readme.close()
         os.system("git add .")
         os.system("git commit -m 'Link'")
         os.system("git push")
     else:
-        bot.sendMessage(chat_id=update.message.chat_id,text="Url yanlış.")
+        bot.sendMessage(chat_id=update.message.chat_id,text="URL HATALI")
 
 
 

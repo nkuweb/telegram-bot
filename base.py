@@ -23,7 +23,7 @@ def kaynak(bot,update):
     print(a)
     if (a != False):
         bot.sendMessage(chat_id=update.message.chat_id, text="Url eklendi")
-        readme= open('README.md', 'a')
+        readme= open('README.md', "a")
         x = str(update.message.text).replace("/kaynak"," ")
         readme.write("*[{}]\n".format(x))
         readme.close()

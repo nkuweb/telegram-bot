@@ -36,6 +36,7 @@ def kaynak2(bot,update):
         os.system("git add .")
         os.system("git commit -m 'Link'")
         os.system("git push")
+	bot.sendMessage(chat_id=update.message.chat_id,text="URL ALNIMIZIN AKIYLA EKLENDİ.")
     else:
         bot.sendMessage(chat_id=update.message.chat_id,text="URL HATALI")
 

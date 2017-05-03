@@ -12,12 +12,10 @@ def start(bot,update):
 def hello(bot,update):
     bot.sendMessage(chat_id=update.message.chat_id,text="Hello"+update.message.from_user.first_name)
 def echo(bot,update):
-    if(check.url(update.message.text) != False):
-        bot.sendMessage(chat_id=update.message.chat_id, text="Databaseye kaydettim")
-    elif(update.message.text=="Hello"):
-        bot.sendMessage(chat_id=update.message.chat_id, text="Sanada Hello")
-    else:
-        bot.sendMessage(chat_id=update.message.chat_id, text="Boş Konuşma "+update.message.from_user.first_name)
+    bot.sendMessage(chat_id=update.message.chat_id,text="Merhaba "+update.message.from_user.first_name)
+    bot.sendMessage(chat_id=update.message.chat_id, text="Kaynak atmak için /kaynak <link>")
+    bot.sendMessage(chat_id=update.message.chat_id,text="Bota Hello dedirtmek için /hello")
+
 def kaynak(bot,update):
 
     msg = update.message.text

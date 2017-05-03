@@ -26,7 +26,8 @@ def kaynak(bot,update):
     a=check.url(k[2])
 
     if (a == True):
-	bot.sendMessage(chat_id=update.message.chat_id, text=update.message.from_user.first_name+"'nin Kaynağı Databaseye kaydettim")
+	bot.sendMessage(chat_id=update.message.chat_id, text=update.message.from_user.first_name+
+			"'nin Kaynağı Databaseye kaydettim")
 	readme= open('README.md', 'a')
         x = str(update.message.text).replace("/kaynak"," ")
         readme.write("{}".format("<li>"+x+"/li>))

@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
+
 import check
 from telegram.ext import Updater,CommandHandler,MessageHandler, Filters
-
+import os
 Token="376593798:AAHMNABESGpXiFGiQ8Bg-0CnHc2EwyXD1hk"
 updater = Updater(token=Token)
 dispatcher = updater.dispatcher
@@ -18,11 +20,14 @@ def echo(bot,update):
         bot.sendMessage(chat_id=update.message.chat_id, text="Boş Konuşma "+update.message.from_user.first_name)
 def kaynak(bot,update):
     a=check.url(update.message.text)
-    print(a)
     if (a != False):
-        bot.sendMessage(chat_id=update.message.chat_id, text="Databaseye kaydettim")
+        bot.sendMessage(chat_id=update.message.chat_id, text=update.message.from_user.first_name+"'nin Kaynağı Databaseye kaydettim")
         with open('telegram-bot/README.md', 'a') as the_file:
-            the_file.write("<li> "+str(a))
+            the_file.write("<li>"+a+"</li>")
+
+        os.system("git add .")
+        os.system("git commit -m {}".format(update.message.text))
+        os.system("git push ")
     else:
         bot.sendMessage(chat_id=update.message.chat_id,text="Url yanlış.")
 

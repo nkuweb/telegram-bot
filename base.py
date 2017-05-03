@@ -25,9 +25,10 @@ def kaynak(bot,update):
         bot.sendMessage(chat_id=update.message.chat_id, text="Url eklendi")
         readme= open('README.md', 'a')
         x = str(update.message.text).replace("/kaynak"," ")
-        readme.write("* [ {} ]".format(x))
+        readme.write("* [{}]".format(x))
+        readme.close()
         os.system("git add .")
-        os.system("git commit -m Link added")
+        os.system("git commit -m 'Link'")
         os.system("git push")
     else:
         bot.sendMessage(chat_id=update.message.chat_id,text="Url yanlış.")

@@ -3,7 +3,7 @@
 import check
 from telegram.ext import Updater,CommandHandler,MessageHandler, Filters
 import os
-Token="349690154:AAFLKTMUlG-UF1OlQvkNXm8CS1WckzZajfA"
+Token="376593798:AAHMNABESGpXiFGiQ8Bg-0CnHc2EwyXD1hk"
 updater = Updater(token=Token)
 dispatcher = updater.dispatcher
 

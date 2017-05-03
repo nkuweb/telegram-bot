@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
+import os
 
 import check
 from telegram.ext import Updater,CommandHandler,MessageHandler, Filters
-import os
+
+
+
 Token="376593798:AAHMNABESGpXiFGiQ8Bg-0CnHc2EwyXD1hk"
 updater = Updater(token=Token)
 dispatcher = updater.dispatcher
@@ -25,9 +28,11 @@ def kaynak(bot,update):
         with open('telegram-bot/README.md', 'a') as the_file:
             the_file.write("<li>"+a+"</li>")
 
+
         os.system("git add .")
-        os.system("git commit -m {}".format(update.message.text))
-        os.system("git push ")
+        os.system("git commit -m {} added".format(update.message.from_user.first_name+"'dan "+update.message.text))
+        os.system("git push")
+
     else:
         bot.sendMessage(chat_id=update.message.chat_id,text="Url yanlış.")
 

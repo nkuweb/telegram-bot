@@ -5,17 +5,17 @@ import check
 from telegram.ext import Updater,CommandHandler,MessageHandler, Filters
 import os
 Token="376593798:AAHMNABESGpXiFGiQ8Bg-0CnHc2EwyXD1hk"
-updater = Updater(token=Token)
+updater = Updater(token = Token)
 dispatcher = updater.dispatcher
 
 def start(bot,update):
-    bot.sendMessage(chat_id=update.message.chat_id, text="Bot çalışıyor.")
+    bot.sendMessage(chat_id = update.message.chat_id, text="Bot çalışıyor.")
 def hello(bot,update):
-    bot.sendMessage(chat_id=update.message.chat_id,text="Hello "+update.message.from_user.first_name)
+    bot.sendMessage(chat_id = update.message.chat_id, text="Hello "+update.message.from_user.first_name)
 def echo(bot,update):
-    bot.sendMessage(chat_id=update.message.chat_id,text="Merhaba "+update.message.from_user.first_name)
-    bot.sendMessage(chat_id=update.message.chat_id, text="Kaynak atmak için /kaynak <link>")
-    bot.sendMessage(chat_id=update.message.chat_id,text="Bota Hello dedirtmek için /hello")
+    bot.sendMessage(chat_id = update.message.chat_id, text="Merhaba "+update.message.from_user.first_name)
+    bot.sendMessage(chat_id = update.message.chat_id, text="Kaynak atmak için /kaynak <link>")
+    bot.sendMessage(chat_id = update.message.chat_id, text="Bota Hello dedirtmek için /hello")
 
 def kaynak(bot,update):
 
@@ -24,7 +24,7 @@ def kaynak(bot,update):
     k =  x.split(" ")
     a=check.url(k[2])
     if (a == True):
-        bot.sendMessage(chat_id=update.message.chat_id, text=update.message.from_user.first_name +
+        bot.sendMessage(chat_id=update.message.chat_id , text=update.message.from_user.first_name +
                                                              "'nin Kaynağı Databaseye kaydettim")
         readme = open('README.md', 'a')
         x = str(update.message.text).replace("/kaynak", " ")

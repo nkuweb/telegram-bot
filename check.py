@@ -8,9 +8,4 @@ def url(url):
     else:
         return False
 
-def chechurl(url):
-    if(urllib.urlopen(url).getcode()==200):
-        return True
-    else:
-        return False
 

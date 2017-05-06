@@ -1,4 +1,5 @@
 import re
+import urllib
 from urllib.parse import urlparse
 def url(url):
     x = urlparse(url)
@@ -6,3 +7,10 @@ def url(url):
         return True
     else:
         return False
+
+def chechurl(url):
+    if(urllib.urlopen(url).getcode()==200):
+        return True
+    else:
+        return False
+

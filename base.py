@@ -10,7 +10,7 @@ dispatcher = updater.dispatcher
 def start(bot,update):
     bot.sendMessage(chat_id=update.message.chat_id, text="Bot çalışıyor.")
 def hello(bot,update):
-    bot.sendMessage(chat_id=update.message.chat_id,text="Hello"+update.message.from_user.first_name)
+    bot.sendMessage(chat_id=update.message.chat_id,text="Hello "+update.message.from_user.first_name)
 def echo(bot,update):
     bot.sendMessage(chat_id=update.message.chat_id,text="Merhaba "+update.message.from_user.first_name)
     bot.sendMessage(chat_id=update.message.chat_id, text="Kaynak atmak için /kaynak <link>")
@@ -22,7 +22,7 @@ def kaynak(bot,update):
     x = str(msg ).replace("/kaynak"," ")
     k =  x.split(" ")
     a=check.url(k[2])
-
+    print(a)
     if (a == True):
         bot.sendMessage(chat_id=update.message.chat_id, text=update.message.from_user.first_name +
                                                              "'nin Kaynağı Databaseye kaydettim")

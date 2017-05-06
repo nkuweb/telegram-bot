@@ -22,7 +22,7 @@ def kaynak(bot,update):
     x = str(msg ).replace("/kaynak"," ")
     k =  x.split(" ")
     a=check.url(k[2])
-    print(a)
+    print(x)
     if (a == True):
         bot.sendMessage(chat_id=update.message.chat_id, text=update.message.from_user.first_name +
                                                              "'nin Kaynağı Databaseye kaydettim")

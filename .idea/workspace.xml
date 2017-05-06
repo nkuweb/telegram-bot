@@ -23,7 +23,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
               <caret line="24" column="11" lean-forward="false" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
-              <folding />
+              <folding>
+                <marker date="1494079244707" expanded="true" signature="796:2258" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -45,7 +47,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="105">
-                <caret line="7" column="201" lean-forward="false" selection-start-line="7" selection-start-column="201" selection-end-line="7" selection-end-column="201" />
+                <caret line="7" column="301" lean-forward="false" selection-start-line="7" selection-start-column="301" selection-end-line="7" selection-end-column="301" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -324,7 +326,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="32" column="71" lean-forward="false" selection-start-line="32" selection-start-column="71" selection-end-line="32" selection-end-column="71" />
-          <folding />
+          <folding>
+            <marker date="1494079244707" expanded="true" signature="796:2258" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -353,7 +357,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="32" column="71" lean-forward="false" selection-start-line="32" selection-start-column="71" selection-end-line="32" selection-end-column="71" />
-          <folding />
+          <folding>
+            <marker date="1494079244707" expanded="true" signature="796:2258" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -382,7 +388,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="105">
-            <caret line="7" column="201" lean-forward="false" selection-start-line="7" selection-start-column="201" selection-end-line="7" selection-end-column="201" />
+            <caret line="7" column="301" lean-forward="false" selection-start-line="7" selection-start-column="301" selection-end-line="7" selection-end-column="301" />
             <folding />
           </first_editor>
           <second_editor />
@@ -403,7 +409,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="24" column="11" lean-forward="false" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
-          <folding />
+          <folding>
+            <marker date="1494079244707" expanded="true" signature="796:2258" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -19,6 +19,7 @@ def echo(bot,update):
     bot.sendMessage(chat_id = update.message.chat_id, text="Merhaba "+update.message.from_user.first_name)
     bot.sendMessage(chat_id = update.message.chat_id, text="Kaynak atmak için /kaynak <link>")
     bot.sendMessage(chat_id = update.message.chat_id, text="Bota Hello dedirtmek için /hello")
+    bot.sendMessage(chat_id = update.message.chat_id, text="Url Listesi için /UrlList")
 
 def kaynak(bot,update):
 
@@ -28,7 +29,7 @@ def kaynak(bot,update):
     a=check.url(k[2])
     if (a == True):
         bot.sendMessage(chat_id=update.message.chat_id , text=update.message.from_user.first_name +
-                                                             "'nin Kaynağı Databaseye kaydettim")
+                                                              "'nin Kaynağı Databaseye kaydettim")
         mongodb.Insert(x,update.message.from_user.first_name)
         readme = open('README.md', 'a')
         x = str(update.message.text).replace("/kaynak", " ")
@@ -43,7 +44,6 @@ def kaynak(bot,update):
 
 def UrlList(bot,update):
     list=mongodb.UrlList()
-    print(list)
     for i in range(len(list)):
         bot.sendMessage(chat_id=update.message.chat_id, text=list[i]["url"])
 

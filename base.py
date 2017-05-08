@@ -1,17 +1,20 @@
 # -*- coding: utf-8 -*-
 import urllib
-
+from database import MongoDB
 import check
 from telegram.ext import Updater,CommandHandler,MessageHandler, Filters
 import os
 Token="376593798:AAHMNABESGpXiFGiQ8Bg-0CnHc2EwyXD1hk"
 updater = Updater(token = Token)
 dispatcher = updater.dispatcher
+mongodb=MongoDB()
 
 def start(bot,update):
     bot.sendMessage(chat_id = update.message.chat_id, text="Bot çalışıyor.")
+
 def hello(bot,update):
     bot.sendMessage(chat_id = update.message.chat_id, text="Hello "+update.message.from_user.first_name)
+
 def echo(bot,update):
     bot.sendMessage(chat_id = update.message.chat_id, text="Merhaba "+update.message.from_user.first_name)
     bot.sendMessage(chat_id = update.message.chat_id, text="Kaynak atmak için /kaynak <link>")
@@ -26,6 +29,7 @@ def kaynak(bot,update):
     if (a == True):
         bot.sendMessage(chat_id=update.message.chat_id , text=update.message.from_user.first_name +
                                                              "'nin Kaynağı Databaseye kaydettim")
+        mongodb.Insert(x,update.message.from_user.first_name)
         readme = open('README.md', 'a')
         x = str(update.message.text).replace("/kaynak", " ")
         readme.write("{}".format(update.message.from_user.first_name+" <li>" + x + "</li>"))

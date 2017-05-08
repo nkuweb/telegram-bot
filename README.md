@@ -5,4 +5,4 @@
 
 <h2>Kaynaklar</h2>
 <ul>
-Utkucan <li>  https://github.com/UtkucanBykl/Blog-Django</li>Utkucan <li>  http://www.facebook.com</li>Utkucan <li>  https://github.com/UtkucanBykl/Blog-Django</li>Emir <li>  http://www.google.com</li>Utkucan <li>  http://stackoverflow.com/questions/1949318/checking-if-a-website-is-up-via-python</li>Utkucan <li>  http://stackoverflow.com/questions/1949318/checking-if-a-website-is-up-via-python</li>Utkucan <li>  http://stackoverflow.com/questions/1949318/checking-if-a-website-is-up-via-python</li>Utkucan <li>  http://stackoverflow.com/questions/1949318/checking-if-a-website-is-up-via-python</li>Utkucan <li>  https://github.com/</li>Utkucan <li>  http://stackoverflow.com/questions/13210730/how-to-make-pymongos-find-return-a-list</li>
+Utkucan <li>  https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/</li>

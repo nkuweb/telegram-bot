@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 import urllib
+
+from telegram import ChatAction
+
 from database import MongoDB
 import check
 from telegram.ext import Updater,CommandHandler,MessageHandler, Filters

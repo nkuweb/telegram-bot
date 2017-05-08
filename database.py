@@ -19,11 +19,5 @@ class MongoDB():
             return False
 
     def UrlList(self):
-        list = self.collection.find()
-        for (a, i) in enumerate(list):
-            print
-            """
-                    --- {} ---
-                    User  : {}
-                    Url : {}
-                    """.format(a, i['user'], i['url'])
+        myresults = list(self.collection.find())
+        return myresults

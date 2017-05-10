@@ -1,17 +1,15 @@
 # -*- coding: utf-8 -*-
-import urllib
-
-from telegram import ChatAction
 
 from database import MongoDB
-import check
+import check,os
 from telegram.ext import Updater,CommandHandler,MessageHandler, Filters
-import os
+
 Token="376593798:AAHMNABESGpXiFGiQ8Bg-0CnHc2EwyXD1hk"
 updater = Updater(token = Token)
 dispatcher = updater.dispatcher
 mongodb=MongoDB()
-
+admins=["utkucanbykl","vlademir92","HB"]
+users=["utkucanbykl","vlademir92","HB"]
 def start(bot,update):
     bot.sendMessage(chat_id = update.message.chat_id, text="Bot çalışıyor.")
 
@@ -25,15 +23,19 @@ def echo(bot,update):
     bot.sendMessage(chat_id = update.message.chat_id, text="Url Listesi için /UrlList")
 
 def kaynak(bot,update):
-
+    if(update.message.from_user.username not in users):
+        bot.sendMessage(chat_id=update.message.chat_id,text="Kaynak eklemenize izin yok .\n@utkucanbykl ya da @vlademir92 'e mesaj atıp eklenmenizi istiyebilirsiniz .")
+        return
     msg = update.message.text
     x = str(msg ).replace("/kaynak"," ")
     k =  x.split(" ")
     a=check.url(k[2])
     if (a == True):
+        if(mongodb.Insert(x,update.message.from_user.first_name)==False):
+            bot.sendMessage(chat_id=update.message.chat_id,text="zaten var")
+            return 0
         bot.sendMessage(chat_id=update.message.chat_id , text=update.message.from_user.first_name +
                                                               "'nin Kaynağı Databaseye kaydettim")
-        mongodb.Insert(x,update.message.from_user.first_name)
         readme = open('README.md', 'a')
         x = str(update.message.text).replace("/kaynak", " ")
         readme.write("{}".format(update.message.from_user.first_name+" <li>" + x + "</li>"))
@@ -50,6 +52,16 @@ def UrlList(bot,update):
     for i in range(len(list)):
         bot.sendMessage(chat_id=update.message.chat_id, text=list[i]["url"])
 
+def ekle(bot,update):
+    if(update.message.from_user.username not in admins):
+        bot.sendMessage(chat_id=update.message.chat_id,text="Üye eklemeye izniniz yok")
+    else:
+        msg=update.message.text
+        msg=msg.replace("/ekle","",1)
+        users.append(msg)
+        bot.sendMessage(chat_id=update.message.chat_id,text="Üye eklendi")
+
+
 #---------------HANDLER IS HERE--------------------
 
 start_handler = CommandHandler('start', start)
@@ -57,6 +69,7 @@ hello_handler=CommandHandler('hello',hello)
 echo_handler = MessageHandler(Filters.text, echo)
 kaynak_handler=CommandHandler('kaynak',kaynak)
 urllist_handler=CommandHandler('UrlList',UrlList)
+ekle_handler=CommandHandler('ekle',ekle)
 
 
 
@@ -68,6 +81,7 @@ dispatcher.add_handler(start_handler)
 dispatcher.add_handler(hello_handler)
 dispatcher.add_handler(kaynak_handler)
 dispatcher.add_handler(urllist_handler)
+dispatcher.add_handler((ekle_handler))
 #--------------------------------------------------
 
 updater.start_polling()

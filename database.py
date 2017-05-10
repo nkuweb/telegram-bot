@@ -8,16 +8,28 @@ class MongoDB():
         self.collection = self.db["telegramcollection"]
 
     def Insert(self,url,user):
-        url={
+        urll={
             "url":url,
             "user":user
         }
         try:
-            self.collection.insert(url)
-            return True
+            if(self.UrlCheck(url)):
+                self.collection.insert(urll)
+                return True
+            else:
+                return False
         except:
             return False
 
     def UrlList(self):
         myresults = list(self.collection.find())
         return myresults
+
+    def UrlCheck(self,url):
+        sonuc=list(self.collection.find({"url":url}))
+        if(url in sonuc):
+            print("Var")
+            return False
+        else:
+            print("Yok")
+            return True

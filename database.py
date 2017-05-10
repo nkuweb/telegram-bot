@@ -3,7 +3,7 @@ from pymongo import MongoClient
 class MongoDB():
 
     def __init__(self):
-        self.client = MongoClient()
+        self.client = MongoClient('localhost', 27017)
         self.db = self.client["telegram"]
         self.collection = self.db["telegramcollection"]
 
@@ -13,12 +13,13 @@ class MongoDB():
             "user":user
         }
         try:
-            if(self.UrlCheck(url)):
+            if(self.UrlCheck(str(url))==True):
                 self.collection.insert(urll)
                 return True
             else:
                 return False
         except:
+            print("Exepet")
             return False
 
     def UrlList(self):

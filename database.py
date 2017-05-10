@@ -13,7 +13,7 @@ class MongoDB():
             "user":user
         }
         try:
-            if(self.UrlCheck(str(url))==True):
+            if(self.UrlCheck(str(url))==False):
                 self.collection.insert(urll)
                 return True
             else:
@@ -30,7 +30,7 @@ class MongoDB():
         sonuc=list(self.collection.find({"url":url}))
         if(url in sonuc):
             print("Var")
-            return False
+            return True
         else:
             print("Yok")
-            return True
+            return False

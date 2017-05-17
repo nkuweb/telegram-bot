@@ -32,5 +32,5 @@ class MongoDB():
             print("Var")
             return True
         else:
-            print("Yok")
+            print(url+"Yok")
             return False

@@ -27,7 +27,7 @@ class MongoDB():
         return myresults
 
     def UrlCheck(self,url):
-        sonuc=list(self.collection.find({"url":url}))
+        sonuc=list(self.collection.find_one({"url":url}))
         if(url in sonuc):
             print("Var")
             return True

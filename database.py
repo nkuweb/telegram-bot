@@ -28,7 +28,7 @@ class MongoDB():
 
     def UrlCheck(self,url):
 
-        if(url in self.collection.find({"url":url})):
+        if(url in self.collection.find_one({"url":url})):
             print("Var")
             return True
         else:

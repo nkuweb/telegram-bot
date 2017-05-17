@@ -8,8 +8,10 @@ Token="376593798:AAHMNABESGpXiFGiQ8Bg-0CnHc2EwyXD1hk"
 updater = Updater(token = Token)
 dispatcher = updater.dispatcher
 mongodb=MongoDB()
-admins=["utkucanbykl","vlademir92","HB"]
-users=["utkucanbykl","vlademir92","HB"]
+
+users=["utkucanbykl","vlademir92","badgeekluck"]
+
+
 def start(bot,update):
     bot.sendMessage(chat_id = update.message.chat_id, text="Bot çalışıyor.")
 
@@ -52,14 +54,7 @@ def UrlList(bot,update):
     for i in range(len(list)):
         bot.sendMessage(chat_id=update.message.chat_id, text=list[i]["url"])
 
-def ekle(bot,update):
-    if(update.message.from_user.username not in admins):
-        bot.sendMessage(chat_id=update.message.chat_id,text="Üye eklemeye izniniz yok")
-    else:
-        msg=update.message.text
-        msg=msg.replace("/ekle","",1)
-        users.append(msg)
-        bot.sendMessage(chat_id=update.message.chat_id,text="Üye eklendi")
+
 
 
 #---------------HANDLER IS HERE--------------------
@@ -69,7 +64,6 @@ hello_handler=CommandHandler('hello',hello)
 echo_handler = MessageHandler(Filters.text, echo)
 kaynak_handler=CommandHandler('kaynak',kaynak)
 urllist_handler=CommandHandler('UrlList',UrlList)
-ekle_handler=CommandHandler('ekle',ekle)
 
 
 
@@ -81,7 +75,6 @@ dispatcher.add_handler(start_handler)
 dispatcher.add_handler(hello_handler)
 dispatcher.add_handler(kaynak_handler)
 dispatcher.add_handler(urllist_handler)
-dispatcher.add_handler((ekle_handler))
 #--------------------------------------------------
 
 updater.start_polling()

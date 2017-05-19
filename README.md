@@ -4,4 +4,4 @@
 
 
 <h2>Kaynaklar</h2>
-[Kaynaklar](http://212.47.245.158)
+http://212.47.245.158

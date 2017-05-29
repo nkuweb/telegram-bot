@@ -5,8 +5,11 @@ class MongoDB():
 
     def __init__(self):
         self.client = MongoClient('localhost', 27017)
-        self.db = self.client["telegramm"]
-        self.collection = self.db["telegrammcollection"]
+        self.db = self.client["telegra"]
+        self.collection = self.db["telegracollection"]
+        self.userdb = self.client["usertelegram"]
+        self.usercollection = self.userdb["usercollection"]
+
 
     def Insert(self, url, user):
         urll={
@@ -43,12 +46,12 @@ class MongoDB():
             "chat_id":chat_id
         }
         try:
-            self.collection.insert(user)
+            self.usercollection.insert(user)
             return True
         except:
             return False
 
     def UserList(self):
 
-        myresult = list(self.collection.find())
+        myresult = list(self.usercollection.find())
         return myresult

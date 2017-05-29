@@ -5,7 +5,7 @@ from database import MongoDB
 import check,os
 from telegram.ext import Updater,CommandHandler,MessageHandler, Filters
 
-Token = "361088304:AAHiOV1OPo9keiII_0l5MMXgpr273Zp2Wfk"
+Token="376593798:AAHMNABESGpXiFGiQ8Bg-0CnHc2EwyXD1hk"
 updater = Updater(token = Token)
 dispatcher = updater.dispatcher
 mongodb=MongoDB()
@@ -28,7 +28,8 @@ def echo(bot, update):
 def kaynak(bot, update):
     if(update.message.from_user.username not in users):
         bot.sendMessage(chat_id=update.message.chat_id,
-                        text="Kaynak eklemenize izin yok .\n@utkucanbykl ya da @vlademir92 'e mesaj atıp eklenmenizi istiyebilirsiniz .")
+                        text="""Kaynak eklemenize izin yok .\n@utkucanbykl ya da @vlademir92 'e
+                        mesaj atıp eklenmenizi istiyebilirsiniz .""")
         return
     msg = update.message.text
     x = str(msg ).replace("/kaynak"," ")
@@ -37,24 +38,26 @@ def kaynak(bot, update):
     if (a == True):
         if(mongodb.Insert(x, update.message.from_user.first_name)==False):
             bot.sendMessage(chat_id=update.message.chat_id, text="zaten var")
-            return 0
+            return False
         bot.sendMessage(chat_id=update.message.chat_id , text=update.message.from_user.first_name +
                                                               "'nin Kaynağı Databaseye kaydettim")
-        readme = open('README.md', 'a')
-        x = str(update.message.text).replace("/kaynak", " ")
-        readme.write("{}".format(update.message.from_user.first_name+" <li>" + x + "</li>"))
-        readme.close()
-        os.system("git add -A")
-        os.system("git commit -m '" + update.message.from_user.first_name + " Link '")
-        os.system("git push")
-        bot.sendMessage(chat_id=update.message.chat_id, text="Url github'a eklendi.")
+        list = mongodb.UrlList()
+        for i in range(len(list)):
+            try:
+                bot.sendMessage(chat_id=list[i]["chat_id"],
+                                text="Hey, " + list[i]["name"] + " yeni kaynak eklendi.\n" + x)
+            except:
+                pass
     else:
         bot.sendMessage(chat_id=update.message.chat_id, text="URL HATALI")
 
 def UrlList(bot, update):
     list=mongodb.UrlList()
     for i in range(len(list)):
-        bot.sendMessage(chat_id=update.message.chat_id, text=list[i]["url"])
+        try:
+            bot.sendMessage(chat_id=update.message.chat_id, text=list[i]["url"])
+        except:
+            pass
 
 def Kaydol(bot, update):
     user = update.message.from_user.username
@@ -62,10 +65,9 @@ def Kaydol(bot, update):
     if(mongodb.Kaydol(user, chat_id)):
         bot.sendMessage(chat_id=update.message.chat_id, text="Kaydolundu")
     else:
-        bot.sendMessage(chat_id=update.message.chat_id, text="Hata")
-    list=mongodb.UrlList()
-    for i in range(len(list)):
-        print(list[i]["name"])
+        bot.sendMessage(chat_id=update.message.chat_id, text="Zaten Üyesin")
+
+
 
 
 

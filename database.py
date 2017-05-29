@@ -5,10 +5,9 @@ class MongoDB():
 
     def __init__(self):
         self.client = MongoClient('localhost', 27017)
-        self.db = self.client["telegra"]
-        self.collection = self.db["telegracollection"]
-        self.userdb = self.client["usertelegram"]
-        self.usercollection = self.userdb["usercollection"]
+        self.db = self.client["telegram"]
+        self.collection = self.db["telegramcollection"]
+
 
 
     def Insert(self, url, user):
@@ -41,17 +40,19 @@ class MongoDB():
             return False
 
     def Kaydol(self, user, chat_id):
+        if(self.collection.find_one({"name":user})):
+            return False
         user={
             "name":user,
             "chat_id":chat_id
         }
         try:
-            self.usercollection.insert(user)
+            self.collection.insert(user)
             return True
         except:
             return False
 
     def UserList(self):
 
-        myresult = list(self.usercollection.find())
+        myresult = list(self.collection.find())
         return myresult

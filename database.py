@@ -1,16 +1,18 @@
+import datetime
 from pymongo import MongoClient
 
 class MongoDB():
 
     def __init__(self):
         self.client = MongoClient('localhost', 27017)
-        self.db = self.client["telegram"]
-        self.collection = self.db["telegramcollection"]
+        self.db = self.client["telegramm"]
+        self.collection = self.db["telegrammcollection"]
 
-    def Insert(self,url,user):
+    def Insert(self, url, user):
         urll={
             "url":url,
-            "user":user
+            "user":user,
+            "date":datetime.datetime.now()
         }
         try:
             if(self.UrlCheck(str(url))==False):
@@ -26,7 +28,7 @@ class MongoDB():
         myresults = list(self.collection.find())
         return myresults
 
-    def UrlCheck(self,url):
+    def UrlCheck(self, url):
 
         if(self.collection.find_one({"url":url})):
             print("Var")
@@ -34,3 +36,19 @@ class MongoDB():
         else:
             print(url+"Yok")
             return False
+
+    def Kaydol(self, user, chat_id):
+        user={
+            "name":user,
+            "chat_id":chat_id
+        }
+        try:
+            self.collection.insert(user)
+            return True
+        except:
+            return False
+
+    def UserList(self):
+
+        myresult = list(self.collection.find())
+        return myresult

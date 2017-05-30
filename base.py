@@ -62,10 +62,17 @@ def UrlList(bot, update):
 def Kaydol(bot, update):
     user = update.message.from_user.username
     chat_id = update.message.chat_id
-    if(mongodb.Kaydol(user, chat_id)):
+    if(mongodb.Sign(user, chat_id)):
         bot.sendMessage(chat_id=update.message.chat_id, text="Kaydolundu")
     else:
         bot.sendMessage(chat_id=update.message.chat_id, text="Zaten Üyesin")
+
+def BeniSil(bot, update):
+    user = update.message.from_user.username
+    if(mongodb.Delete(user)):
+        bot.sendMessage(chat_id=update.message.chat_id, text="Silindiniz")
+    else:
+        bot.sendMessage(chat_id=update.message.chat_id, text="Üyeliğin Yok !!")
 
 
 
@@ -80,6 +87,7 @@ echo_handler = MessageHandler(Filters.text, echo)
 kaynak_handler=CommandHandler('kaynak', kaynak)
 urllist_handler=CommandHandler('UrlList', UrlList)
 kaydol_handler=CommandHandler('Kaydol', Kaydol)
+benisil_handler=CommandHandler('BeniSil', BeniSil)
 
 
 
@@ -92,6 +100,7 @@ dispatcher.add_handler(hello_handler)
 dispatcher.add_handler(kaynak_handler)
 dispatcher.add_handler(urllist_handler)
 dispatcher.add_handler(kaydol_handler)
+dispatcher.add_handler(benisil_handler)
 
 #--------------------------------------------------
 

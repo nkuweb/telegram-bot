@@ -39,7 +39,7 @@ class MongoDB():
             print(url+"Yok")
             return False
 
-    def Kaydol(self, user, chat_id):
+    def Sign(self, user, chat_id):
         if(self.collection.find_one({"name":user})):
             return False
         user={
@@ -56,3 +56,10 @@ class MongoDB():
 
         myresult = list(self.collection.find())
         return myresult
+
+    def Delete(self, user):
+
+        if(self.collection.delete_many({"name":user})):
+            return True
+        else:
+            return False

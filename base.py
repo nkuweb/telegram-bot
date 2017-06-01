@@ -59,20 +59,20 @@ def UrlList(bot, update):
         except:
             pass
 
-def Kaydol(bot, update):
+def BildirimAc(bot, update):
     user = update.message.from_user.username
     chat_id = update.message.chat_id
     if(mongodb.Sign(user, chat_id)):
-        bot.sendMessage(chat_id=update.message.chat_id, text="Kaydolundu")
+        bot.sendMessage(chat_id=update.message.chat_id, text="Bildirimler Açık")
     else:
-        bot.sendMessage(chat_id=update.message.chat_id, text="Zaten Üyesin")
+        bot.sendMessage(chat_id=update.message.chat_id, text="Bildirimler Zaten Açık")
 
-def BeniSil(bot, update):
+def BildirimKapa(bot, update):
     user = update.message.from_user.username
     if(mongodb.Delete(user)):
-        bot.sendMessage(chat_id=update.message.chat_id, text="Silindiniz")
+        bot.sendMessage(chat_id=update.message.chat_id, text="Bildirimler Kapatıldı")
     else:
-        bot.sendMessage(chat_id=update.message.chat_id, text="Üyeliğin Yok !!")
+        bot.sendMessage(chat_id=update.message.chat_id, text="Bildirimler Açık Değil !!")
 
 
 
@@ -86,8 +86,8 @@ hello_handler=CommandHandler('hello', hello)
 echo_handler = MessageHandler(Filters.text, echo)
 kaynak_handler=CommandHandler('kaynak', kaynak)
 urllist_handler=CommandHandler('UrlList', UrlList)
-kaydol_handler=CommandHandler('Kaydol', Kaydol)
-benisil_handler=CommandHandler('BeniSil', BeniSil)
+ac_handler=CommandHandler('BildirimAc', BildirimAc)
+kapa_handler=CommandHandler('BildirimKapa', BildirimKapa)
 
 
 
@@ -99,8 +99,8 @@ dispatcher.add_handler(start_handler)
 dispatcher.add_handler(hello_handler)
 dispatcher.add_handler(kaynak_handler)
 dispatcher.add_handler(urllist_handler)
-dispatcher.add_handler(kaydol_handler)
-dispatcher.add_handler(benisil_handler)
+dispatcher.add_handler(ac_handler)
+dispatcher.add_handler(kapa_handler)
 
 #--------------------------------------------------
 
